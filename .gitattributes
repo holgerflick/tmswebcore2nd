@@ -1,0 +1,4 @@
+*	text=auto
+*.pas	eol=crlf
+*.dfm	eol=crlf
+*.dpr	eol=crlf
