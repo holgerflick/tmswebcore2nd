@@ -40,19 +40,18 @@ var
 
 begin
   LDate := EncodeDate( 2022, 4, 9 );
-  Assert.AreEqual( LDate, TExamples.CalculateEasterSunday(2022));
+  Assert.AreEqualDate( LDate, TExamples.CalculateEasterSunday(2022), 'Easter Sunday 2022');
 
   LDate := EncodeDate( 2023, 4, 9 );
-  Assert.AreEqual( LDate, TExamples.CalculateEasterSunday(2023));
+  Assert.AreEqualDate( LDate, TExamples.CalculateEasterSunday(2023), 'Easter Sunday 2023');
 end;
 
 procedure TMyTestClassUnit1.TestSumOfDigits;
 begin
-  Assert.AreEqual( 19, TExamples.SumOfDigits( 412561 ) );
-  Assert.AreEqual( 19, TExamples.SumOfDigits( 561412 ) );
+  Assert.AreEqual( 19, TExamples.SumOfDigits( 412561 ), 'for 412561' );
+  Assert.AreEqual( 19, TExamples.SumOfDigits( 561412 ), 'for 561412' );
 
-  Assert.AreNotEqual( 20, TExamples.SumOfDigits( 561413 ) );
-
+  Assert.AreNotEqual( 20, TExamples.SumOfDigits( 561413 ), 'Example! This needs to fail.' );
 end;
 
 initialization
