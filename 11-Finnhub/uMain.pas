@@ -178,11 +178,13 @@ end;
 
 procedure TFrmMain.txtSymbolKeyPress(Sender: TObject; var Key: Char);
 begin
+  // Enter
   if Key = #13 then
   begin
     RequestSymbol(Symbol);
   end;
 
+  // Esc
   if Key = #27 then
   begin
     Symbol := '';
