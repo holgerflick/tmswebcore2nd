@@ -10,8 +10,4 @@ object FrmMain: TFrmMain
   Font.Style = []
   ParentFont = False
   OnCreate = WebFormCreate
-  object Speech: TWebSpeechSynthesis
-    Left = 120
-    Top = 128
-  end
 end

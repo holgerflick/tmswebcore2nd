@@ -13,6 +13,9 @@ type
     { Private declarations }
     procedure LogDoc;
     procedure LogBody;
+    procedure InvalidateText;
+    procedure AddClickEvent;
+
   public
     { Public declarations }
   end;
@@ -24,11 +27,44 @@ implementation
 
 {$R *.dfm}
 
+procedure TFrmMain.AddClickEvent;
+var
+  LButton: TJSHTMLElement;
+
+begin
+  LButton := document.getHTMLElementById('btnOne');
+
+  LButton.onclick :=
+    function(aEvent: TJSMouseEvent) : Boolean
+    begin
+      ShowMessage('Click!');
+    end;
+end;
+
+procedure TFrmMain.InvalidateText;
+var
+  LElement: TJSHTMLElement;
+
+begin
+  LElement := document.getHTMLElementById('txtText');
+
+  LElement.classList.add('is-invalid');
+    LElement.classList.add('is-invalid');
+      LElement.classList.add('is-invalid');
+
+      LElement.classList.remove('is-invalid');
+end;
+
 procedure TFrmMain.LogBody;
 var
   LElement : TJSHTMLElement;
 
+  LContainer : TJSHTMLElement;
 begin
+  LContainer := document.getElementById('container') as TJSHTMLElement;
+
+  console.log( LContainer.hidden );
+
   LElement := document.body as TJSHTMLElement;
 
   // <body>...</body>
@@ -39,7 +75,6 @@ begin
 
   // remove HTML tags
   console.log( LElement.textContent );
-
 end;
 
 procedure TFrmMain.LogDoc;
@@ -61,6 +96,8 @@ begin
   //LogDoc;
 
   LogBody;
+
+  AddClickEvent;
 end;
 
 end.

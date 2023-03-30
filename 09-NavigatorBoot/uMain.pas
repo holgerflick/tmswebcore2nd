@@ -8,7 +8,6 @@ uses
 
 type
   TFrmMain = class(TWebForm)
-    Speech: TWebSpeechSynthesis;
     procedure WebFormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -31,7 +30,7 @@ implementation
 
 procedure TFrmMain.InitMenu;
 var
-  LElement: TJSElement;
+  LElement: TJSHTMLElement;
 
   LRoot: TJSElement;
 
@@ -48,12 +47,11 @@ var
   LHead,
   LBody: TJSElement;
 begin
-  LElement := document.getElementById('navbarDropdownMenuLink');
+  LElement := document.getHTMLElementById('navbarDropdownMenuLink');
   LElement.innerText := 'Actions';
 
   LElement := document.getElementById('menPricing') as TJSHTMLElement;
-
-  TJSHTMLElement( LElement ).onclick := OnPricingClick;
+  LElement.onclick := OnPricingClick;
 
   LRoot := document.getElementById('rootDropDown');
 
@@ -66,7 +64,7 @@ begin
     TJSHTMLElement(LLink).onclick :=
       function(aEvent: TJSMouseEvent) : Boolean
       begin
-        ShowMessage( 'clickedidoooo' );
+        ShowMessage( 'Clicked' );
 
         console.log( aEvent.targetElement.attributes['no'] );
       end;
