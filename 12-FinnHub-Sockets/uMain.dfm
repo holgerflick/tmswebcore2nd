@@ -1,6 +1,6 @@
 object FrmMain: TFrmMain
-  Width = 482
-  Height = 198
+  Width = 570
+  Height = 368
   Caption = 'Holger'#39's Quick Stock Lookup'
   CSSLibrary = cssBootstrap
   ElementFont = efCSS
@@ -26,7 +26,7 @@ object FrmMain: TFrmMain
   end
   object btnSubscribe: TWebButton
     Left = 24
-    Top = 128
+    Top = 24
     Width = 121
     Height = 41
     Caption = 'Subscribe'
@@ -50,14 +50,14 @@ object FrmMain: TFrmMain
     OnConnect = SocketConnect
     OnDisconnect = SocketDisconnect
     OnDataReceived = SocketDataReceived
-    Left = 240
-    Top = 88
+    Left = 176
+    Top = 24
   end
   object dsTrade: TWebClientDataSet
     OnCalcFields = dsQuoteCalcFields
     Params = <>
-    Left = 352
-    Top = 88
+    Left = 232
+    Top = 24
     object dsTradet: TIntegerField
       Tag = 1
       FieldName = 't'
@@ -69,11 +69,11 @@ object FrmMain: TFrmMain
       Calculated = True
     end
     object dsTradep: TFloatField
-      DisplayLabel = 'Price:'
+      DisplayLabel = 'Price'
       FieldName = 'p'
     end
     object dsTradev: TFloatField
-      DisplayLabel = 'Volume:'
+      DisplayLabel = 'Volume'
       FieldName = 'v'
     end
   end

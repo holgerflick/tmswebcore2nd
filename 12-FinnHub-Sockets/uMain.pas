@@ -30,6 +30,7 @@ type
   private
     { Private declarations }
     FHeaderRow: TJSElement;
+    FBodyRow: TJSElement;
 
     function GetSymbol: String;
     procedure SetSymbol(const Value: String);
@@ -168,7 +169,7 @@ var
 begin
   LObj := SocketData.jsobject;
 
-  LValue := TJSObject( TJSJSON.parse( SocketData.jsobject.toString ) );
+  LValue := TJSObject( TJSJSON.parse( LObj.toString ) );
 
   console.log( LValue );
 
@@ -186,7 +187,6 @@ begin
     UpdateTable( dsTrade );
     VisResult(True);
   end;
-
 end;
 
 procedure TFrmMain.SocketDisconnect(Sender: TObject);
@@ -235,9 +235,7 @@ end;
 
 procedure TFrmMain.UpdateTable( ADataset: TDataset );
 var
-  LDate: TJSHTMLElement;
   LTbl: TJSHTMLElement;
-
   LRow: TJSElement;
   LCell: TJSElement;
   f: Integer;
@@ -256,8 +254,13 @@ begin
   // create header
   if not Assigned( FHeaderRow ) then
   begin
-    FHeaderRow := document.createElement('tr');
+    FHeaderRow := document.createElement('thead');
     LTbl.append(FHeaderRow);
+    LRow:= document.createElement('tr');
+    FHeaderRow.append(LRow);
+
+    FBodyRow := document.createElement('tbody');
+    LTbl.append(FBodyRow);
 
     for f := 0 to ADataset.FieldCount-1 do
     begin
@@ -265,17 +268,15 @@ begin
 
       if LField.Tag = 0 then
       begin
-        LCell := document.createElement('td');
+        LCell := document.createElement('th');
         LCell.className := 'fw-bold';
         LCell.innerText := LField.DisplayLabel;
-        FHeaderRow.appendChild(LCell);
+        LRow.appendChild(LCell);
       end;
     end;
   end;
 
-
   ADataset.First;
-
   while not ADataset.eof do
   begin
     // add values to row in case field is not marked with Tag = 1
@@ -283,14 +284,13 @@ begin
     // add a row
     LRow := document.createElement('tr');
 
-    // find position where to insert
-    if not Assigned( FHeaderRow.nextElementSibling ) then
+    if not Assigned( FBodyRow.firstElementChild ) then
     begin
-      LTbl.appendChild( LRow )
+      FBodyRow.appendChild( LRow )
     end
     else
     begin
-      LTbl.insertBefore( LRow, FHeaderRow.nextSibling );
+      FBodyRow.insertBefore( LRow, FBodyRow.firstChild );
     end;
 
     for f := 0 to ADataset.FieldCount -1 do
