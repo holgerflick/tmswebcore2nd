@@ -245,12 +245,6 @@ begin
   // get table
   LTbl := document.getHTMLElementById('outValues');
 
-  // clear existing rows - this should only be one
-  while LTbl.childElementCount > 100 do
-  begin
-    LTbl.lastElementChild.remove;
-  end;
-
   // create header
   if not Assigned( FHeaderRow ) then
   begin
@@ -291,6 +285,12 @@ begin
     else
     begin
       FBodyRow.insertBefore( LRow, FBodyRow.firstChild );
+    end;
+
+    // clear out rows at the end
+    while FBodyRow.childElementCount > 20 do
+    begin
+      FBodyRow.lastElementChild.remove;
     end;
 
     for f := 0 to ADataset.FieldCount -1 do
