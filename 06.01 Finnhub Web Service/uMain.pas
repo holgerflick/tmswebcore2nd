@@ -65,7 +65,7 @@ uses
 
 
 resourcestring
-  SECRET = '***REMOVED***';
+  SECRET = '--REMOVED--';
   REQ_URL = 'https://finnhub.io/api/v1/quote?symbol=%s&token=%s';
   SKEY = 'StockSymbol';
   SToken = 's';

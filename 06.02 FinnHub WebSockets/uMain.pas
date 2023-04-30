@@ -70,7 +70,7 @@ uses
 
 
 resourcestring
-  SECRET = '***REMOVED***';
+  SECRET = '---REMOVED---';
   SKEY = 'StockSymbol';
   SToken = 's';
 

@@ -44,7 +44,7 @@ object FrmMain: TFrmMain
     UseSSL = True
     Port = 443
     HostName = 'ws.finnhub.io'
-    PathName = '/?token=***REMOVED***'
+    PathName = '/?token=REMOVED'
     OnConnect = SocketConnect
     OnDisconnect = SocketDisconnect
     OnDataReceived = SocketDataReceived
