@@ -2,7 +2,7 @@
 
 This repository contains source code for most examples presented in the book.
 
-[More information](https://flixengineering.com/books](https://www.holgerscode.com/books/2023/04/25/web-application-development-with-delphi/)
+[More information](https://www.holgerscode.com/books/2023/04/25/web-application-development-with-delphi/)
 
 ![Cover](https://www.holgerscode.com/books/cover_3_250.png)
 
