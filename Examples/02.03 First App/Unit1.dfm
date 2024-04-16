@@ -37,8 +37,6 @@ object Form1: TForm1
   object WebTimer1: TWebTimer
     Left = 144
     Top = 120
-    Width = 24
-    Height = 24
     Enabled = False
     OnTimer = WebTimer1Timer
   end
